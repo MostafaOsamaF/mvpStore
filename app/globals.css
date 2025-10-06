@@ -143,3 +143,32 @@
   );
   pointer-events: none;
 }
+
+/* تحسين الأنيميشن للحركة السلسة المستمرة بدون تقطيع */
+/* حركة الماركيه السلسة */
+.marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  direction: rtl; /* علشان الحركة تبقى من اليمين لليسار بالعربي */
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+/* الحركة المستمرة */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -11,7 +11,7 @@ export function CartContent() {
 
   if (items.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 max-w-7xl py-16">
         <Card className="max-w-md mx-auto">
           <CardContent className="p-12 text-center space-y-6">
             <div className="w-20 h-20 rounded-full bg-secondary/50 flex items-center justify-center mx-auto">
@@ -35,7 +35,7 @@ export function CartContent() {
   const total = getTotalPrice()
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 max-w-7xl py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-4">
@@ -45,7 +45,7 @@ export function CartContent() {
                 <div className="flex gap-4">
                   {/* Product Image */}
                   <Link href={`/products/${item.id}`} className="flex-shrink-0">
-                    <div className="w-24 h-24 rounded-lg overflow-hidden bg-muted">
+                    <div className="w-20 h-20 rounded-lg overflow-hidden bg-muted">
                       <img
                         src={item.image || "/placeholder.svg"}
                         alt={item.name}
@@ -57,9 +57,9 @@ export function CartContent() {
                   {/* Product Info */}
                   <div className="flex-1 min-w-0">
                     <Link href={`/products/${item.id}`} className="hover:text-primary">
-                      <h3 className="font-semibold text-lg mb-1 line-clamp-2">{item.name}</h3>
+                      <h3 className="font-semibold text-base mb-1 line-clamp-2">{item.name}</h3>
                     </Link>
-                    <p className="text-primary font-bold text-xl mb-3">{item.price} جنيه</p>
+                    <p className="text-primary font-bold text-lg mb-3">{item.price} جنيه</p>
 
                     <div className="flex items-center gap-4">
                       {/* Quantity Controls */}
@@ -99,7 +99,7 @@ export function CartContent() {
                   {/* Item Total */}
                   <div className="text-left hidden sm:block">
                     <p className="text-sm text-muted-foreground mb-1">الإجمالي</p>
-                    <p className="font-bold text-xl">{item.price * item.quantity} جنيه</p>
+                    <p className="font-bold text-lg">{item.price * item.quantity} جنيه</p>
                   </div>
                 </div>
               </CardContent>
@@ -140,9 +140,11 @@ export function CartContent() {
                 </div>
               </div>
 
-              <Button size="lg" className="w-full text-lg">
-                إتمام الطلب
-              </Button>
+              <Link href="/checkout">
+                <Button size="lg" className="w-full text-lg">
+                  إتمام الطلب
+                </Button>
+              </Link>
 
               <Link href="/products">
                 <Button variant="outline" size="lg" className="w-full bg-transparent">

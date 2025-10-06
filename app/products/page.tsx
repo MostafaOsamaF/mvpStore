@@ -11,13 +11,13 @@ export default function ProductsPage() {
 
       <main className="flex-1">
         <div className="bg-secondary/30 py-12">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-7xl">
             <h1 className="text-3xl md:text-4xl font-bold text-center">المتجر</h1>
             <p className="text-center text-muted-foreground mt-2">اكتشف مجموعتنا الكاملة من المنتجات الثقافية</p>
           </div>
         </div>
 
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 max-w-7xl py-8">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Filters Sidebar */}
             <aside className="lg:w-64 flex-shrink-0">

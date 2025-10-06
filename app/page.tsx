@@ -2,8 +2,10 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { TestimonialsCarousel } from "@/components/testimonials-carousel"
 import Link from "next/link"
-import { BookOpen, Palette, Sparkles, ArrowLeft } from "lucide-react"
+import { BookOpen, Palette, Sparkles, ArrowLeft, Mail } from "lucide-react"
 
 export default function HomePage() {
   const categories = [
@@ -68,7 +70,7 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative egyptian-pattern bg-gradient-to-b from-secondary/50 to-background py-20 md:py-32">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-7xl">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance leading-tight">
                 بوابتك لدعم الإبداع والفن المصري
@@ -86,24 +88,74 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Mission Section */}
+        <section className="py-16 md:py-20 bg-gradient-to-b from-background to-secondary/20">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">رسالة وزارة الثقافة</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-pretty">
+                  تلتزم وزارة الثقافة المصرية بدعم الإبداع المحلي والفن الأصيل من خلال توفير منصة متميزة لعرض وتسويق
+                  المنتجات الثقافية والفنية. نسعى لتعزيز الهوية الثقافية المصرية وتشجيع الفنانين والحرفيين المحليين على
+                  الابتكار والإبداع.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
+                  نؤمن بأن الثقافة والفن هما أساس بناء المجتمعات المتقدمة، ونعمل على إتاحة الفرصة للمبدعين المصريين لعرض
+                  أعمالهم والوصول إلى جمهور أوسع. من خلال هذه المنصة، نهدف إلى ربط الفنانين بالمهتمين بالثقافة والفن
+                  المصري الأصيل.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                      <Sparkles className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">دعم المبدعين المصريين</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      كل عملية شراء تساهم بشكل مباشر في دعم الفنانين والحرفيين المصريين، وتساعدهم على الاستمرار في إنتاج
+                      أعمال فنية وثقافية متميزة تعكس التراث المصري العريق.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                      <Palette className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">تعزيز الهوية الثقافية</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      نساهم في الحفاظ على التراث الثقافي المصري وتطويره من خلال دعم الصناعات الإبداعية والفنية، ونشجع
+                      على الابتكار مع الحفاظ على الأصالة والهوية المصرية المميزة.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Categories Section */}
         <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-7xl">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">الأقسام الرئيسية</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {categories.map((category) => {
                 const Icon = category.icon
                 return (
                   <Link key={category.id} href={`/products?category=${category.id}`}>
-                    <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 border-2 hover:border-primary">
-                      <div className="aspect-[4/3] overflow-hidden">
+
+                    <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 border-2 hover:border-primary p-0">
+                      <div className="aspect-[3/2] overflow-hidden">
                         <img
                           src={category.image || "/placeholder.svg"}
                           alt={category.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <CardContent className="p-6">
+                      <div className="p-6">
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                             <Icon className="h-5 w-5 text-primary" />
@@ -115,8 +167,9 @@ export default function HomePage() {
                           تصفح القسم
                           <ArrowLeft className="h-4 w-4" />
                         </Button>
-                      </CardContent>
+                      </div>
                     </Card>
+
                   </Link>
                 )
               })}
@@ -126,28 +179,28 @@ export default function HomePage() {
 
         {/* Best Sellers Section */}
         <section className="py-16 md:py-24 bg-secondary/30">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-7xl">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">الأكثر مبيعاً</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {bestSellers.map((product) => (
                 <Link key={product.id} href={`/products/${product.id}`}>
-                  <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
-                    <div className="aspect-square overflow-hidden bg-muted">
+                  <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 h-full p-0">
+                    <div className="aspect-[4/5] overflow-hidden bg-muted">
                       <img
                         src={product.image || "/placeholder.svg"}
                         alt={product.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <CardContent className="p-4">
-                      <h3 className="font-semibold text-lg mb-2 line-clamp-2">{product.name}</h3>
+                    <div className="p-4">
+                      <h3 className="font-semibold text-base mb-2 line-clamp-2">{product.name}</h3>
                       <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-primary">{product.price} جنيه</span>
-                        <Button size="sm" className="gap-2">
+                        <span className="text-xl font-bold text-primary">{product.price} جنيه</span>
+                        <Button size="sm" className="gap-2 text-xs">
                           أضف للسلة
                         </Button>
                       </div>
-                    </CardContent>
+                    </div>
                   </Card>
                 </Link>
               ))}
@@ -163,21 +216,44 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* About Section */}
+        {/* Testimonials Section */}
         <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">دور وزارة الثقافة</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                تلتزم وزارة الثقافة المصرية بدعم الإبداع المحلي والفن الأصيل من خلال توفير منصة متميزة لعرض وتسويق
-                المنتجات الثقافية والفنية. نسعى لتعزيز الهوية الثقافية المصرية وتشجيع الفنانين والحرفيين المحليين.
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">آراء الجمهور</h2>
+              <p className="text-lg text-muted-foreground">ماذا يقول عملاؤنا عن تجربتهم معنا</p>
+            </div>
+            <TestimonialsCarousel />
+          </div>
+        </section>
+
+      {/* Newsletter Section */}
+        <section className="py-16 md:py-20 bg-gradient-to-b from-secondary/30 to-secondary/50 egyptian-pattern">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="max-w-2xl mx-auto text-center">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <Mail className="h-8 w-8 text-primary" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">ابق على اطلاع</h2>
+              <p className="text-lg text-muted-foreground mb-8 text-pretty">
+                اشترك لتصلك أحدث الإصدارات والفعاليات الثقافية
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                كل عملية شراء تساهم في دعم المبدعين المصريين وتعزيز الصناعات الثقافية والإبداعية في مصر.
-              </p>
+              <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <Input
+                  type="email"
+                  placeholder="أدخل بريدك الإلكتروني"
+                  className="flex-1 h-12 text-base bg-background"
+                  required
+                />
+                <Button type="submit" size="lg" className="h-12 px-8 whitespace-nowrap">
+                  اشترك
+                </Button>
+              </form>
+              <p className="text-sm text-muted-foreground mt-4">نحترم خصوصيتك ولن نشارك بياناتك مع أي طرف ثالث</p>
             </div>
           </div>
         </section>
+
       </main>
 
       <Footer />

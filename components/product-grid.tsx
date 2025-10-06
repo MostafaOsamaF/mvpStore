@@ -156,11 +156,11 @@ export function ProductGrid() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {filteredProducts.map((product) => (
           <Link key={product.id} href={`/products/${product.id}`}>
             <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
-              <div className="aspect-square overflow-hidden bg-muted">
+              <div className="aspect-[4/5] overflow-hidden bg-muted">
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
@@ -168,12 +168,12 @@ export function ProductGrid() {
                 />
               </div>
               <CardContent className="p-4">
-                <h3 className="font-semibold text-lg mb-2 line-clamp-2">{product.name}</h3>
+                <h3 className="font-semibold text-base mb-2 line-clamp-2">{product.name}</h3>
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-2xl font-bold text-primary">{product.price} جنيه</span>
+                  <span className="text-xl font-bold text-primary">{product.price} جنيه</span>
                   <Button
                     size="sm"
-                    className="gap-2"
+                    className="gap-2 text-xs"
                     onClick={(e) => handleAddToCart(product, e)}
                     variant={addedItems.has(product.id) ? "secondary" : "default"}
                   >
